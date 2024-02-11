@@ -44,15 +44,28 @@ public class StockManagerSingleton {
 		return false;
 	}
 	
-	public ArrayList<MediaProduct> getMediaPRoductBelowPrice(int maxPrice){
+	public ArrayList<MediaProduct> getMediaProductBelowPrice(int maxPrice){
 		/* - gets media products that are below given price
 		 * - creates a new arraylist of media products that is below maxprice
 		 *  - don't leak info
 		 */
 		
+		ArrayList<MediaProduct> productsBelowPrice = new ArrayList<>();
+		
+		for (MediaProduct currentProduct : inventoryList) {
+			if(currentProduct.getPrice() < maxPrice) {
+				productsBelowPrice.add(currentProduct);
+			}
+		}
+		
+		return productsBelowPrice;	
 	}
 	
 	public void printListOfMediaProduct(ArrayList<MediaProduct> productList) {
+		
+		for (MediaProduct currentProduct : productList) {
+			System.out.println(currentProduct.toString());
+		}
 		
 	}
 	
