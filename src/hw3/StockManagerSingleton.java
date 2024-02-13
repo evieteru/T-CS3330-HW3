@@ -1,10 +1,18 @@
 package hw3;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.*;
+
+import HW3.CDRecordProduct;
+import HW3.Genre;
+import HW3.MediaProduct;
+import HW3.TapeRecordProduct;
+import HW3.VinylRecordProduct;
 
 public class StockManagerSingleton {
 
-	private String inventoryFilePath; //must be closed for modification
-
+	private String inventoryFilePath = "files/inventory.csv"; //must be closed for modification
+	ArrayList<MediaProduct> Inventory = new ArrayList<>();
 	
 	//Getter and Setter
 	public String getInventoryFilePath() {
@@ -17,14 +25,56 @@ public class StockManagerSingleton {
 	
 	
 	//Methods ---------------------------------------------------------
-	
-	public boolean initializeStock() {
-		/* - read data from CSV file
-		 * - parse file, create MediaProduct items, add to inventory
-		 * - return true for success
-		 */
 		
-		return false;
+	public boolean initializeStock() {
+		//create string array to store each line from file
+		ArrayList<String> unformattedData = new ArrayList<>();
+		
+		try { //open file, read each line and add it to the string array
+			File data = new File(inventoryFilePath);
+			Scanner dataScanner = new Scanner(data); 
+			dataScanner.nextLine(); //skip first line of the file
+			while (dataScanner.hasNextLine()) {
+				String line = dataScanner.nextLine();
+				unformattedData.add(line);
+			}
+			dataScanner.close(); //close scanner when finished
+		} catch (FileNotFoundException e) {
+			System.out.println("File not found.");
+			return false;
+		}
+		
+		//iterate through each line from the file
+		for (String dataLine : unformattedData) {
+			//create a string array that separates data based on ',' delimitor
+			String[] brokenData = dataLine.split(",");
+			
+			/* The first element of each array tells us which type of 
+			 * object to declare. The object is declared using the other
+			 * casted elements of that same array, and finally each product
+			 * object is added to Inventory, the MediaProduct Array list.*/
+			if ("CD".equals(brokenData[0])) {
+				CDRecordProduct cd = new CDRecordProduct(brokenData[1],
+						Double.parseDouble(brokenData[2]), 
+						Integer.parseInt(brokenData[3]),
+						Genre.valueOf(brokenData[4]));
+				Inventory.add(cd);
+			} else if ("Vinyl".equals(brokenData[0])){
+				VinylRecordProduct v = new VinylRecordProduct(brokenData[1],
+						Double.parseDouble(brokenData[2]), 
+						Integer.parseInt(brokenData[3]),
+						Genre.valueOf(brokenData[4]));
+				Inventory.add(v);
+			} else {
+				TapeRecordProduct t = new TapeRecordProduct(brokenData[1],
+						Double.parseDouble(brokenData[2]), 
+						Integer.parseInt(brokenData[3]),
+						Genre.valueOf(brokenData[4]));
+				Inventory.add(t);
+			}
+		}
+		
+		return true; //return true for success !
 	}
 	
 	public boolean updateItemPrice(MediaProduct product, double newPrice) {
