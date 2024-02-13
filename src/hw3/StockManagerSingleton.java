@@ -69,30 +69,38 @@ public class StockManagerSingleton {
 		
 	}
 	
-	public ArrayList<VinylRecordProduct> getVinylRecordList(ArrayList<MediaProduct> productList){
-		/* - create a newArrayList of Vinyls that returns the Vinyl products as a list
-		 * - don't leak info
-		 */
+	/**
+	 * Creates a new ArrayList of VinylRecordProduc product list that filters the vinyl records in media product list
+	 * @param productList
+	 * @return ArrayList of only the VinylRecordProduct in it. 
+	 */
+	public ArrayList<VinylRecordProduct> getVinylRecordList(ArrayList<MediaProduct> productList) {
+		ArrayList<VinylRecordProduct> vinylRecords = new ArrayList<VinylRecordProduct>();
+		
+		return vinylRecords;
 	}
+		
+	/**
+	 * Creates a new ArrayList of CDRecordProduct product list that filters the CD records in media product list
+	 * @param productList
+	 * @return ArrayList of only the CDRecordProduct in it. 
+	 */
+	public ArrayList<CDRecordProduct> getCDRecordProduct(ArrayList<MediaProduct> productList) {
+		ArrayList<CDRecordProduct> CDRecords = new ArrayList<CDRecordProduct>();
+		
+		return CDRecords;
+	}	
 	
-	public ArrayList<CDRecordProduct> getCDRecordList(ArrayList<MediaProduct> productList){
-		/* - create a newArrayList of CDs that returns the CD products as a list
-		 * - don't leak info
-		 */
+	/**
+	 * Creates a new ArrayList of TapeRecordProduct product list that filters the tape records in media product list
+	 * @param productList
+	 * @return ArrayList of only the TapeRecordProduct in it. 
+	 */
+	public ArrayList<TapeRecordProduct> getTapeRecordProduct(ArrayList<MediaProduct> productList) {
+		ArrayList<TapeRecordProduct> TapeRecords = new ArrayList<TapeRecordProduct>();
+		
+		return TapeRecords;
 	}
-	
-	public ArrayList<TapeRecordProduct> getTapeRecordList(ArrayList<MediaProduct> productList){
-		/* - create a newArrayList of tapes that returns the tape products as a list
-		 * - don't leak info
-		 */
-	}
-	
-	
-	
-	
-	
-	
-	
-	
+}	
 	
 }
