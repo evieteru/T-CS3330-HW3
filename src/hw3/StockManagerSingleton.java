@@ -1,13 +1,16 @@
 package hw3;
 import java.io.File;
+
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.*;
 
-import HW3.CDRecordProduct;
-import HW3.Genre;
-import HW3.MediaProduct;
-import HW3.TapeRecordProduct;
-import HW3.VinylRecordProduct;
+import hw3.CDRecordProduct;
+import hw3.Genre;
+import hw3.MediaProduct;
+import hw3.TapeRecordProduct;
+import hw3.VinylRecordProduct;
 
 public class StockManagerSingleton {
 
@@ -33,7 +36,6 @@ public class StockManagerSingleton {
 		try { //open file, read each line and add it to the string array
 			File data = new File(inventoryFilePath);
 			Scanner dataScanner = new Scanner(data); 
-			dataScanner.nextLine(); //skip first line of the file
 			while (dataScanner.hasNextLine()) {
 				String line = dataScanner.nextLine();
 				unformattedData.add(line);
@@ -65,7 +67,7 @@ public class StockManagerSingleton {
 						Integer.parseInt(brokenData[3]),
 						Genre.valueOf(brokenData[4]));
 				Inventory.add(v);
-			} else {
+			} else if ("Tape".equals(brokenData[0])) {
 				TapeRecordProduct t = new TapeRecordProduct(brokenData[1],
 						Double.parseDouble(brokenData[2]), 
 						Integer.parseInt(brokenData[3]),
@@ -90,8 +92,41 @@ public class StockManagerSingleton {
 	}
 	
 	public boolean saveStock() {
-		/*Saves updated info to the CSV file, overwrite existing file*/
-		return false;
+		try {
+			// open the file with a FileWriter object
+			FileWriter dataWriter = new FileWriter(inventoryFilePath);
+			
+			//iterate through each Inventory product
+			for (MediaProduct unsavedProduct : Inventory) {
+				String productType; //save this string depending on object type
+				if (unsavedProduct instanceof CDRecordProduct) {
+					productType = "CD";
+				}
+				else if (unsavedProduct instanceof VinylRecordProduct) {
+					productType = "Vinyl";
+				}
+				else {
+					productType = "Tape";
+				}
+				
+				// get all attributes of the object 
+				String title = unsavedProduct.title;
+				double price = unsavedProduct.price;
+				int year = unsavedProduct.year;
+				Genre genre = unsavedProduct.genre;
+				
+				//create a string in the correct format and write it to the file
+				String line = productType + "," + title + "," + price + "," + year + "," + genre + "\n";
+				dataWriter.write(line);
+			}
+			dataWriter.close(); //close file when finished
+		} catch (IOException e) {
+			System.out.println("An error occurred.");
+			e.printStackTrace(); 
+			return false;
+		}
+		
+		return true; //return true for success !!
 	}
 	
 	public ArrayList<MediaProduct> getMediaProductBelowPrice(int maxPrice){
