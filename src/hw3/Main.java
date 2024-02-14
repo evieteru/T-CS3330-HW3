@@ -1,8 +1,36 @@
 package hw3;
+import java.util.ArrayList;
 
 public class Main {
 
 	public static void main(String[] args) {
+		
+		StockManagerSingleton testManager = new StockManagerSingleton();
+		
+		boolean initialize;
+		boolean save;
+		initialize = testManager.initializeStock();
+		save = testManager.saveStock();
+		
+		if (initialize == true && save == true) {
+		testManager.printListOfMediaProduct(testManager.getInventoryArray());
+		}
+		else {
+			System.out.println("Something went wrong...");
+			System.exit(0); //Exit program upon failure to initialize or save inventory
+		}
+		
+		
+		
+		// Media Below Price
+		ArrayList <MediaProduct> mediaBelowTwenty = new ArrayList<>();
+		mediaBelowTwenty = testManager.getMediaProductBelowPrice(20);
+		
+		System.out.println("\nCheap! Cheap! Under $20!\n");
+		
+		testManager.printListOfMediaProduct(mediaBelowTwenty);
+		
+		
 		
 
 	}

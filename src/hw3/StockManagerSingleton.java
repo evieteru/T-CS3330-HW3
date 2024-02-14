@@ -26,6 +26,10 @@ public class StockManagerSingleton {
 		this.inventoryFilePath = inventoryFilePath;
 	}
 	
+	public ArrayList<MediaProduct> getInventoryArray() {
+		return Inventory;
+	}
+	
 	
 	//Methods ---------------------------------------------------------
 		
