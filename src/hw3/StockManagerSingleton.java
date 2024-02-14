@@ -130,14 +130,12 @@ public class StockManagerSingleton {
 	}
 	
 	public ArrayList<MediaProduct> getMediaProductBelowPrice(int maxPrice){
-		/* - gets media products that are below given price
-		 * - creates a new arraylist of media products that is below maxprice
-		 *  - don't leak info
-		 */
 		
+		// Creating a new ArrayList to hold media products
 		ArrayList<MediaProduct> productsBelowPrice = new ArrayList<>();
 		
-		for (MediaProduct currentProduct : inventoryList) {
+		// Iterating through the ArrayList. If a product's price is below the indicated price, add it to the ArrayList.
+		for (MediaProduct currentProduct : Inventory) {
 			if(currentProduct.getPrice() < maxPrice) {
 				productsBelowPrice.add(currentProduct);
 			}
@@ -179,7 +177,7 @@ public class StockManagerSingleton {
 		ArrayList<CDRecordProduct> CDRecords = new ArrayList<CDRecordProduct>();
 		for (MediaProduct product : productList) {
 			if (product instanceof CDRecordProduct) {
-				VinylRecordProduct cdRecord = (CDRecordProduct) product;
+				CDRecordProduct cdRecord = (CDRecordProduct) product;
 				CDRecords.add(cdRecord);
 			}
 		}
@@ -195,12 +193,14 @@ public class StockManagerSingleton {
 		ArrayList<TapeRecordProduct> tapeRecords = new ArrayList<TapeRecordProduct>();
 		for (MediaProduct product : productList) {
 			if (product instanceof TapeRecordProduct) {
-				TapeRecordProduct tapeRecord = (VinylRecordProduct) product;
+				TapeRecordProduct tapeRecord = (TapeRecordProduct) product;
 				tapeRecords.add(tapeRecord);
 			}
 		}
 		return tapeRecords;
+
+	
 	}
 }	
 	
-}
+
