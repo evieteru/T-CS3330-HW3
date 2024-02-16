@@ -14,7 +14,7 @@ import hw3.VinylRecordProduct;
 
 public class StockManagerSingleton {
 
-	private String inventoryFilePath = "files/inventory.csv"; //must be closed for modification
+	private final static String inventoryFilePath = "files/inventory.csv"; //must be closed for modification
 	ArrayList<MediaProduct> Inventory = new ArrayList<>();
 	
 	//Getter and Setter
