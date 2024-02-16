@@ -13,10 +13,10 @@ import hw3.TapeRecordProduct;
 import hw3.VinylRecordProduct;
 
 public class StockManagerSingleton {
-
+	private static StockManagerSingleton instance; // Check on lecture about instance, correct me if you need @Thomas
 	private final static String inventoryFilePath = "files/inventory.csv"; //must be closed for modification
 	ArrayList<MediaProduct> Inventory = new ArrayList<>();
-	
+	// private StockManagerSingleton() {} ~ do we use static method .get() or getInstance()? confuse on this one
 	//Getter and Setter
 	public String getInventoryFilePath() {
 		return inventoryFilePath;
@@ -101,7 +101,7 @@ public class StockManagerSingleton {
         		}
     		}
     		Inventory.add(product);
-		return false;
+		return true;
 	}
 	
 	public boolean removeItem(MediaProduct product) {
