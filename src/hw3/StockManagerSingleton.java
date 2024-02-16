@@ -178,7 +178,7 @@ public class StockManagerSingleton {
 		return productsBelowPrice;	
 	}
 	
-	public void printListOfMediaProduct(ArrayList<MediaProduct> productList) {
+	public void printListOfMediaProduct(ArrayList<? extends MediaProduct> productList) {
 		
 		for (MediaProduct currentProduct : productList) {
 			System.out.println(currentProduct.toString());

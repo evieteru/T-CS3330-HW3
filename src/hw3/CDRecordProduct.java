@@ -6,5 +6,10 @@ public class CDRecordProduct extends MediaProduct {
 		super(title, price, year, genre);
 		// TODO Auto-generated constructor stub
 	}
+	
+	@Override
+	public String toString() {
+	    return "CD Title: " + title + ", Price: " + price + ", Year: " + year + ", Genre: " + genre;
+	}
 
 }

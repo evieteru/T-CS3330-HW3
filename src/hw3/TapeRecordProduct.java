@@ -6,4 +6,8 @@ public class TapeRecordProduct extends MediaProduct{
 		super(title, price, year, genre);
 	}
 
+	@Override
+	public String toString() {
+	    return "Tape Title: " + title + ", Price: " + price + ", Year: " + year + ", Genre: " + genre;
+	}
 }
