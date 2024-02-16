@@ -21,14 +21,29 @@ public class StockManagerSingleton {
 	public String getInventoryFilePath() {
 		return inventoryFilePath;
 	}
-
-	public void setInventoryFilePath(String inventoryFilePath) {
-		this.inventoryFilePath = inventoryFilePath;
-	}
 	
 	public ArrayList<MediaProduct> getInventoryArray() {
 		return Inventory;
 	}
+	
+	/*
+	 private static StockManagerSingleton instance;
+	 
+	 //private constructor to prevent instantiation from outside
+	 private StockManagerSingleton() {
+	 }
+	 
+	 //Static method to provide access to the single instance
+	 public static StockManagerSingleton getInstance() {
+	 
+	 	//create instance if it doesn't exist
+	 	if (instance == null){
+	 		instance = new StockManagerSingleton();
+	 	}
+	 	
+	 	return instance;
+	 	}
+	 */
 	
 	
 	//Methods ---------------------------------------------------------
@@ -174,7 +189,7 @@ public class StockManagerSingleton {
 	 * @param productList
 	 * @return ArrayList of only the VinylRecordProduct in it. 
 	 */
-	public ArrayList<VinylRecordProduct> getVinylRecordList(ArrayList<MediaProduct> productList) {
+	public ArrayList<VinylRecordProduct> getVinylRecordProduct(ArrayList<MediaProduct> productList) {
 		ArrayList<VinylRecordProduct> vinylRecords = new ArrayList<VinylRecordProduct>();
 		for (MediaProduct product : productList) {
 			if (product instanceof VinylRecordProduct) {
