@@ -32,16 +32,16 @@ public class Main {
 		
 		// Test functions for get all instances of a specific subclass from list of various subclasses
 		System.out.println("Get all tape records from mediaBelowTwenty list.");
-		ArrayList<TapeRecordProduct> tapeRecords = StockManagerSingleton.getInstance().getTapeRecordProduct(mediaBelowTwenty);
-		printListOfMediaProduct(tapeRecords);
+		ArrayList<TapeRecordProduct> tapeRecords = testManager.getTapeRecordProduct(mediaBelowTwenty);
+		testManager.printListOfMediaProduct(tapeRecords);
 		
 		System.out.println("Get all CD records from mediaBelowTwenty list");
-		ArrayList<CDRecordProduct> cdRecords = StockManagerSingleton.getInstance().getCDRecordProduct(mediaBelowTwenty);
-		printListOfMediaProduct(cdRecords);
+		ArrayList<CDRecordProduct> cdRecords = testManager.getCDRecordProduct(mediaBelowTwenty);
+		testManager.printListOfMediaProduct(cdRecords);
 		
 		System.out.println("Get all vinyl records from mediaBelowTwenty list");
-		ArrayList<VinylRecordProduct> vinylRecords = StockManagerSingleton.getInstance().getVinylRecordProduct(mediaBelowTwenty);
-		printListOfMediaProduct(vinylRecords);
+		ArrayList<VinylRecordProduct> vinylRecords = testManager.getVinylRecordProduct(mediaBelowTwenty);
+		testManager.printListOfMediaProduct(vinylRecords);
 	}
 		
 
