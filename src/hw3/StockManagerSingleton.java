@@ -84,15 +84,27 @@ public class StockManagerSingleton {
 	}
 	
 	public boolean updateItemPrice(MediaProduct product, double newPrice) {
+		for (MediaProduct item: Inventory) {
+			if (item.equals(product)) {
+				item.setPrice(newPrice);
+				return true;
+			}
+		}
 		return false;
 	}
 	
 	public boolean addItem(MediaProduct product) {
+		for (MediaProduct item: Inventory) {
+        		if (item.equals(product)) {
+            			return false; // if false, item exists
+        		}
+    		}
+    		Inventory.add(product);
 		return false;
 	}
 	
 	public boolean removeItem(MediaProduct product) {
-		return false;
+		return Inventory.remove(product);
 	}
 	
 	public boolean saveStock() {
