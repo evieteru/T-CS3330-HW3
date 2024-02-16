@@ -96,6 +96,7 @@ public class StockManagerSingleton {
 	public boolean addItem(MediaProduct product) {
 		for (MediaProduct item: Inventory) {
         		if (item.equals(product)) {
+				System.out.println("Item already exists: " + product.getTitle() + "Check Inventory again!");
             			return false; // if false, item exists
         		}
     		}
