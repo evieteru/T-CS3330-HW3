@@ -5,7 +5,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		StockManagerSingleton testManager = new StockManagerSingleton();
+		StockManagerSingleton testManager = StockManagerSingleton.getInstance();
 		
 		boolean initialize;
 		boolean save;

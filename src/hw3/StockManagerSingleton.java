@@ -13,10 +13,13 @@ import hw3.TapeRecordProduct;
 import hw3.VinylRecordProduct;
 
 public class StockManagerSingleton {
-	private static StockManagerSingleton instance; // Check on lecture about instance, correct me if you need @Thomas
+	
+	private static StockManagerSingleton instance; 
 	private final static String inventoryFilePath = "files/inventory.csv"; //must be closed for modification
 	ArrayList<MediaProduct> Inventory = new ArrayList<>();
 	// private StockManagerSingleton() {} ~ do we use static method .get() or getInstance()? confuse on this one
+	
+	
 	//Getter and Setter
 	public String getInventoryFilePath() {
 		return inventoryFilePath;
@@ -26,8 +29,7 @@ public class StockManagerSingleton {
 		return Inventory;
 	}
 	
-	/*
-	 private static StockManagerSingleton instance;
+
 	 
 	 //private constructor to prevent instantiation from outside
 	 private StockManagerSingleton() {
@@ -43,7 +45,7 @@ public class StockManagerSingleton {
 	 	
 	 	return instance;
 	 	}
-	 */
+	 
 	
 	
 	//Methods ---------------------------------------------------------
